@@ -13,7 +13,12 @@ fun printFields(obj: Any) {
     // TODO 3: Untuk setiap property, panggil property.getter.call(obj)
     //         untuk mendapatkan nilainya, lalu cetak "namaProperty = nilai"
 
-    // Kode kamu di sini...
+    val kClass = obj::class
+
+    kClass.memberProperties.forEach { prop ->
+        val value = prop.getter.call(obj)
+        println("${prop.name} = $value")
+    }
 }
 
 fun main() {
